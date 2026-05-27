@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #DCDCDC;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #395938;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Sub-barra Laranja */
+.sub-bar {
+    background-color: #E86E25;
+    color: black;
+    width: 100%;
+    text-align: center;
+    padding: 8px 0;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+/* Container do Conteúdo */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Grid da Home (4 Botões) */
+.grid-home {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Botões Grandes Quadrados */
+.card-btn {
+    background-color: #395938;
+    color: white;
+    width: 160px;
+    height: 160px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: transform 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.card-btn:hover {
+    transform: scale(1.05);
+}
+
+.card-btn svg {
+    width: 65px;
+    height: 65px;
+    margin-bottom: 15px;
+    fill: none;
+    stroke: #E86E25;
+    stroke-width: 2;
+}
+
+.card-btn span {
+    color: white;
+    letter-spacing: 1px;
+}
+
+/* Formulários de Cadastro e Edição */
+.form-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 11px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.input-group input {
+    background-color: white;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Inputs específicos da tela de edição (estilo zebrado/desabilitado) */
+.input-disabled input {
+    background-color: #f0f0f0;
+    color: #555;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Botão de Ação Lateral */
+.btn-submit {
+    background-color: #395938;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 20px;
+    align-self: center;
+    min-width: 160px;
+    text-align: center;
+}
+
+.btn-submit:hover {
+    background-color: #2b422a;
+}
+
+/* Área de Busca */
+.search-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+}
+
+.btn-search {
+    background-color: #395938;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* Footer com a Marca */
+footer {
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #395938;
+}
+
+.logo-text span {
+    color: #E86E25;
+}

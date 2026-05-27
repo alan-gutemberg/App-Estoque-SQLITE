@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>EstoqueZ - Cadastrar Produto</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>ESTOQUE</header>
+    <div class="sub-bar">Cadastrar Produto</div>
+    
+    <main>
+        <form class="form-container" action="/api/produtos" method="POST">
+            <div class="form-inputs">
+                <div class="input-group">
+                    <label>Nome do Produto</label>
+                    <input type="text" name="nome" required>
+                </div>
+                <div class="input-group" style="max-width: 300px;">
+                    <label>Tamanho</label>
+                    <input type="text" name="tamanho" required>
+                </div>
+                <div class="input-group" style="max-width: 300px;">
+                    <label>Cor</label>
+                    <input type="text" name="cor" required>
+                </div>
+                <div class="input-group" style="max-width: 300px;">
+                    <label>Modelo</label>
+                    <input type="text" name="modelo" required>
+                </div>
+                <div class="input-group" style="max-width: 300px;">
+                    <label>Referência</label>
+                    <input type="text" name="referencia" required>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-submit">Cadastrar</button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="logo-text">ESTOQUE<span>Z</span></div>
+    </footer>
+</body>
+</html>

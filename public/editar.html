@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>EstoqueZ - Editar Produto</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Estilo específico para a tabela zebrada do print de edição */
+        .zebra-container {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #b5b5b5;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .zebra-row {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            width: 100%;
+        }
+        .zebra-row.bg-grey {
+            background-color: #B0BAB0; /* Tom de cinza-esverdeado do protótipo */
+        }
+        .zebra-row.bg-white {
+            background-color: #FFFFFF;
+        }
+        .zebra-label {
+            font-weight: bold;
+            font-size: 14px;
+            color: #000000;
+            width: 150px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .zebra-row input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: #222;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>ESTOQUE</header>
+    <div class="sub-bar">Editar Produto</div>
+    
+    <main style="flex-direction: column; justify-content: flex-start; padding-top: 50px;">
+        <div style="width: 100%; max-width: 750px;">
+            
+            <div class="search-container">
+                <input type="text" id="searchRef" placeholder="DIGITE A REFERÊNCIA DO PRODUTO" style="text-transform: uppercase;">
+                <button type="button" class="btn-search" onclick="buscarProduto()">BUSCAR</button>
+            </div>
+
+            <form action="/api/produtos/editar" method="POST" id="editForm">
+                <div class="zebra-container">
+                    
+                    <div class="zebra-row bg-grey">
+                        <span class="zebra-label">Produto</span>
+                        <input type="text" id="editNome" name="nome" required>
+                    </div>
+                    
+                    <div class="zebra-row bg-white">
+                        <span class="zebra-label">Tamanho</span>
+                        <input type="text" id="editTamanho" name="tamanho" required>
+                    </div>
+                    
+                    <div class="zebra-row bg-grey">
+                        <span class="zebra-label">Cor</span>
+                        <input type="text" id="editCor" name="cor" required>
+                    </div>
+                    
+                    <div class="zebra-row bg-white">
+                        <span class="zebra-label">Modelo</span>
+                        <input type="text" id="editModelo" name="modelo" required>
+                    </div>
+                    
+                    <input type="hidden" id="editReferencia" name="referencia">
+                </div>
+                
+                <div style="text-align: center; width: 100%;">
+                    <button type="submit" class="btn-submit" style="margin-top: 40px;">Editar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="logo-text">ESTOQUE<span>Z</span></div>
+    </footer>
+
+    <script>
+        function buscarProduto() {
+            // Pega o valor digitado e remove espaços inúteis das pontas
+            const ref = document.getElementById('searchRef').value.trim();
+            if(!ref) return alert('Por favor, digite uma referência antes de buscar!');
+
+            // Faz a requisição para o nosso backend atualizado
+            fetch(`/api/produtos/${ref}`)
+                .then(res => {
+                    if(!res.ok) {
+                        throw new Error('Produto não localizado no sistema. Verifique a referência.');
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    // Preenche com sucesso as linhas do formulário estilo clone
+                    document.getElementById('editNome').value = data.nome;
+                    document.getElementById('editTamanho').value = data.tamanho;
+                    document.getElementById('editCor').value = data.cor;
+                    document.getElementById('editModelo').value = data.modelo;
+                    document.getElementById('editReferencia').value = data.referencia;
+                })
+                .catch(err => {
+                    alert(err.message);
+                    // Limpa os campos caso a busca falhe
+                    document.getElementById('editNome').value = '';
+                    document.getElementById('editTamanho').value = '';
+                    document.getElementById('editCor').value = '';
+                    document.getElementById('editModelo').value = '';
+                    document.getElementById('editReferencia').value = '';
+                });
+        }
+    </script>
+</body>
+</html>
